@@ -36,6 +36,12 @@ docker run --name cspsat1 --rm -it -v `pwd`/work:/work cspsat:1.0
 - `-it` オプションはインタラクティブモードを指定している
 - `-v`  オプションにｙろい，カレント`work` フォルダをcontainerの `/work` フォルダにマウントしている
 
+bashシェルのプロンプトが表示されれば，以下のようにして実行できる．
+
+```
+sugar -vv -solver minisat work/nqueens-8.csp
+```
+
 #### Docker containerの一覧を表示
 
 ```
