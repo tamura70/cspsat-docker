@@ -35,7 +35,8 @@ docker run --name cspsat1 --rm -it -v `pwd`/work:/work cspsat:1.0
 - `cspsat1` というcontainer名を付ける
 - `--rm`  オプションにより，bashシェルが終了すればcontainerが削除される
 - `-it` オプションはインタラクティブモードを指定している
-- `-v`  オプションにより，カレント`work` フォルダをcontainerの `/work` フォルダにマウントしている
+- `-v`  オプションにより，カレントフォルダ中の `work` フォルダをcontainerの `/work` フォルダにマウントしている
+- `Dockerfile` 中で実行権限は `cspsat` ユーザ (UID=1000, GID=1000)，WORKDIRは `/work` と指定している
 
 bashシェルのプロンプトが表示されれば，以下のようにして実行できる．
 
