@@ -9,6 +9,7 @@ docker build -t cspsat:1.0 .
 - `cspsat:1.0` というタグを付けている
 - ネットワーク環境の良好な場所で実行すること
 - 詳細は `Dockerfile` を参照
+    - <https://github.com/tamura70/docker-setup> をcloneして `make install` している
 
 #### Docker imageの一覧を表示
 
