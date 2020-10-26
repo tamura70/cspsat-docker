@@ -6,7 +6,8 @@
 docker build -t cspsat:1.0 .
 ```
 
-- `cspsat:1.0` というタグを付ける
+- `cspsat:1.0` というタグを付けている
+- ネットワーク環境の良好な場所で実行すること
 
 #### Docker imageの一覧を表示
 
