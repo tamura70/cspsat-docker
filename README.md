@@ -42,6 +42,10 @@ bashシェルのプロンプトが表示されれば，以下のようにして�
 sugar -vv -solver minisat work/nqueens-8.csp
 ```
 
+- `/work` フォルダ中にファイルを作成した場合，実際にはホスト側の `work` フォルダに作成される．
+  このファイルのownerは `root` になっているので注意する．
+- `/work` フォルダ以外に作成したファイルなどは，containerを終了した時点で削除される．
+
 #### Docker containerの一覧を表示
 
 ```
