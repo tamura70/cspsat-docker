@@ -11,9 +11,6 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y tzdata
 ENV TZ=Asia/Tokyo 
 
-# sudo
-RUN apt-get install -y sudo
-
 # gcc, g++
 RUN apt-get install -y build-essential
 
@@ -34,6 +31,9 @@ RUN apt-get install -y zip unzip
 
 # nano
 RUN apt-get install -y nano
+
+# sudo
+RUN apt-get install -y sudo
 
 # cspsat-setup
 RUN git clone https://github.com/tamura70/cspsat-setup.git
