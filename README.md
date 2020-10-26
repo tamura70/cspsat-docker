@@ -27,14 +27,15 @@ docker rmi cspsat:1.0
 #### Docker containerの作成と実行
 
 ```
-docker run --name cspsat1 --rm -it -v `pwd`/work:/work cspsat:1.0
+docker run --name cspsat1 --rm -it -v `pwd`/work:/work -u 1000:1000 cspsat:1.0
 ```
 
 - タグ `cspsat:1.0` が付いたdocker imageからcontainerを作成され，bashシェルが実行される
 - `cspsat1` というcontainer名を付ける
 - `--rm`  オプションにより，bashシェルが終了すればcontainerが削除される
 - `-it` オプションはインタラクティブモードを指定している
-- `-v`  オプションにｙろい，カレント`work` フォルダをcontainerの `/work` フォルダにマウントしている
+- `-v`  オプションにより，カレント`work` フォルダをcontainerの `/work` フォルダにマウントしている
+- `-u`  オプションにより，UIDとGIDを指定している
 
 bashシェルのプロンプトが表示されれば，以下のようにして実行できる．
 
