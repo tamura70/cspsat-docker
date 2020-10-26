@@ -27,5 +27,12 @@ RUN apt-get install -y scala
 RUN apt-get install -y git
 
 ## unzip
-RUN apt-get install -y unzp
+RUN apt-get install -y unzip
+
+## nano
+RUN apt-get install -y nano
+
+## cspsat-setup
+RUN git clone https://github.com/tamura70/cspsat-setup.git
+RUN cd cspsat-setup && make install
 
