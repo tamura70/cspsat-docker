@@ -11,28 +11,28 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y tzdata
 ENV TZ=Asia/Tokyo 
 
-## gcc, g++
+# gcc, g++
 RUN apt-get install -y build-essential
 
-## minisatなどで利用している圧縮ライブラリ
+# minisatなどで利用している圧縮ライブラリ
 RUN apt-get install -y zlib1g-dev
 
-## java
+# java
 RUN apt-get install -y default-jdk
 
-## scala
+# scala
 RUN apt-get install -y scala
 
-## git
+# git
 RUN apt-get install -y git
 
-## unzip
+# unzip
 RUN apt-get install -y unzip
 
-## nano
+# nano
 RUN apt-get install -y nano
 
-## cspsat-setup
+# cspsat-setup
 RUN git clone https://github.com/tamura70/cspsat-setup.git
 RUN cd cspsat-setup && make install
 
