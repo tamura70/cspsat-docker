@@ -36,3 +36,7 @@ RUN apt-get install -y nano
 RUN git clone https://github.com/tamura70/cspsat-setup.git
 RUN cd cspsat-setup && make install
 
+# User
+RUN useradd -ms /bin/bash cspsat
+USER cspsat
+WORKDIR /work
