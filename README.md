@@ -48,6 +48,7 @@ sugar -vv -solver minisat csp-examples/nqueens-8.csp
 
 - 実行権限は `cspsat` ユーザ (UID=1000, GID=1000, PW=`cspsat`)，最初のディレクトリは `/work` である
   (`Dockerfile` 中で指定)．
+- ホスト側の `work` フォルダのownerがUID=1000であると仮定している．
 - 管理者権限でコマンドを実行したい場合は `sudo` を用いる．
 - `/work` フォルダ中にファイルを作成した場合，実際にはホスト側の `work` フォルダに作成される．
 - `/work` フォルダ以外に作成したファイルなどは，containerを終了した時点で削除される．
