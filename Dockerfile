@@ -13,15 +13,15 @@ ENV TZ=Asia/Tokyo
 
 # gcc, g++
 # RUN apt-get install -y build-essential
-
 # minisatなどで利用されている圧縮ライブラリ
 # RUN apt-get install -y zlib1g-dev
-
-# java
-RUN apt-get install -y default-jdk
-
+# java jdk
+# RUN apt-get install -y default-jdk
 # git
 # RUN apt-get install -y git
+
+# java jre
+RUN apt-get install -y openjdk-8-jre-headless
 
 # zip, unzip
 RUN apt-get install -y zip unzip
@@ -42,7 +42,7 @@ RUN curl -LO https://downloads.lightbend.com/scala/2.12.8/scala-2.12.8.zip \
     && chmod +x /usr/local/scala-2.12.8/bin/*
 
 # cspsat-setup
-RUN curl -LO  https://github.com/tamura70/cspsat-setup/archive/main.zip \
+RUN curl -LO https://github.com/tamura70/cspsat-setup/archive/main.zip \
     && unzip main.zip \
     && chmod +x cspsat-setup-main/bin/* \
     && cp -pr cspsat-setup-main/bin/* /usr/local/bin/ \
