@@ -44,7 +44,7 @@ docker run --name cspsat1 --rm -it -v `pwd`/work:/work cspsat:1.0
 bashシェルのプロンプトが表示されれば，以下のようにして実行できる．
 
 ```
-sugar -vv -solver minisat nqueens-8.csp
+sugar -vv -solver minisat csp-examples/nqueens-8.csp
 ```
 
 - `/work` フォルダ中にファイルを作成した場合，実際にはホスト側の `work` フォルダに作成される

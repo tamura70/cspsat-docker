@@ -12,22 +12,22 @@ RUN apt-get install -y tzdata
 ENV TZ=Asia/Tokyo 
 
 # gcc, g++
-RUN apt-get install -y build-essential
+# RUN apt-get install -y build-essential
 
 # minisatなどで利用されている圧縮ライブラリ
-RUN apt-get install -y zlib1g-dev
+# RUN apt-get install -y zlib1g-dev
 
 # java
 RUN apt-get install -y default-jdk
 
 # git
-RUN apt-get install -y git
+# RUN apt-get install -y git
 
 # zip, unzip
 RUN apt-get install -y zip unzip
 
-# nano
-RUN apt-get install -y nano
+# nano, less
+RUN apt-get install -y nano less
 
 # sudo
 RUN apt-get install -y sudo
@@ -42,8 +42,11 @@ RUN curl -LO https://downloads.lightbend.com/scala/2.12.8/scala-2.12.8.zip \
     && chmod +x /usr/local/scala-2.12.8/bin/*
 
 # cspsat-setup
-RUN git clone https://github.com/tamura70/cspsat-setup.git
-RUN cd cspsat-setup && make install
+RUN curl -LO  https://github.com/tamura70/cspsat-setup/archive/main.zip \
+    && unzip main.zip \
+    && chmod +x cspsat-setup-main/bin/* \
+    && cp -pr cspsat-setup-main/bin/* /usr/local/bin/ \
+    && cp -pr cspsat-setup-main/lib/* /usr/local/lib/
 
 # User
 RUN useradd -G sudo -u 1000 -ms /bin/bash cspsat
