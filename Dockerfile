@@ -20,9 +20,6 @@ RUN apt-get install -y zlib1g-dev
 # java
 RUN apt-get install -y default-jdk
 
-# scala
-RUN apt-get install -y scala
-
 # git
 RUN apt-get install -y git
 
@@ -35,6 +32,15 @@ RUN apt-get install -y nano
 # sudo
 RUN apt-get install -y sudo
 
+# curl
+RUN apt-get install -y curl
+
+# scala
+RUN curl -LO https://downloads.lightbend.com/scala/2.12.8/scala-2.12.8.zip \
+    && unzip scala-2.12.8.zip \
+    && mv scala-2.12.8 /usr/local/ \
+    && chmod +x /usr/local/scala-2.12.8/bin/*
+
 # cspsat-setup
 RUN git clone https://github.com/tamura70/cspsat-setup.git
 RUN cd cspsat-setup && make install
@@ -43,4 +49,5 @@ RUN cd cspsat-setup && make install
 RUN useradd -G sudo -u 1000 -ms /bin/bash cspsat
 RUN echo 'cspsat:cspsat' | chpasswd
 USER cspsat
+RUN echo 'export PATH=/usr/local/scala-2.12.8/bin:$PATH' >>~/.bashrc
 WORKDIR /work
