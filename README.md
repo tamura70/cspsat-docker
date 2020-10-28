@@ -1,55 +1,69 @@
 ## Docker image
 
+これらの作業はサーバー管理者が行う．
+
+#### dockerコマンドを実行できるユーザの登録
+
+```
+sudo adduser xxx docker
+sudo adduser xxx users
+```
+
+- `xxx` はユーザ名
+
 #### カレントディレクトリのDockerfileからdocker imageを作成
 
 ```
-docker build -t cspsat-ubuntu:1.0 ubuntu/
+docker build -t cspsat-ubuntu ubuntu/
 ```
 
 - ネットワーク環境の良好な場所で実行すること．
-- `Dockerfile` の内容にしたがってdocker imageが作成され，`cspsat-ubuntu:1.0` というタグが付けられる．
+- `Dockerfile` の内容にしたがってdocker imageが作成され，`cspsat-ubuntu` というタグが付けられる．
 - 詳細は `Dockerfile` の内容を参照
 
 軽量なイメージの alpine を用いる場合は以下の通り．
 
 ```
-docker build -t cspsat-alpine:1.0 alpine/
+docker build -t cspsat-alpine alpine/
 ```
 
 #### Docker imageの一覧を表示
 
 ```
-docker images
+sudo docker images
 ```
 
 #### Docker imageの削除
 
 ```
-docker rmi cspsat-ubuntu:1.0
+sudo docker rmi cspsat-ubuntu
 ```
 
 - 必要があればタグでなくimage IDで削除する
 
 ## Docker container
 
+これらの作業は利用者各自が行う．
+
 #### 準備
 
 ```
-sudo chgrp -R users work
+mkdir work
+chgrp -R users work
 chmod -R g+x work
 ```
 
+- 任意のフォルダで良い
 - `work` フォルダのgroupをusers (GID=100)に設定
 - `work` フォルダにusers groupでの書き込み権限を与える
 
 #### Docker containerの作成と実行
 
 ```
-docker run --name cspsat1 --rm -it -v `pwd`/work:/work cspsat-ubuntu:1.0
+docker run --rm -it -v `pwd`/work:/work cspsat-ubuntu
 ```
 
-- タグ `cspsat-ubuntu:1.0` が付いたdocker imageからcontainerが作成され，bashシェルが実行される．
-- containerには `cspsat1` というcontainer名が付けられる．
+- タグ `cspsat-ubuntu` が付いたdocker imageからcontainerが作成され，bashシェルが実行される．
 - `--rm`  オプションにより，bashシェルが終了すればcontainerが削除される．
 - `-it` オプションは，インタラクティブモードを指定している．
 - `-v`  オプションにより，カレントフォルダ中の `work` フォルダをcontainerの `/work` フォルダにマウントしている．
@@ -72,7 +86,7 @@ sugar -vv -solver minisat csp-examples/nqueens-8.csp
 以下のようにすれば，直接実行できる．
 
 ```
-docker run --rm -it -v `pwd`/work:/work cspsat-ubuntu:1.0 sugar -vv -solver minisat csp-examples/arithm-java_cream_solver.csp
+docker run --rm -it -v `pwd`/work:/work cspsat-ubuntu sugar -vv -solver minisat csp-examples/arithm-java_cream_solver.csp
 ```
 
 #### Docker containerの一覧を表示
@@ -88,6 +102,8 @@ docker ps -a
 ```
 docker rm <container ID>
 ```
+
+- 他人のdocker containerを削除しないように注意する必要がありそう
 
 #### 不要なDocker volumeの削除
 
