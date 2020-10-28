@@ -30,13 +30,13 @@ docker build -t cspsat-alpine alpine/
 #### Docker imageの一覧を表示
 
 ```
-sudo docker images
+docker images
 ```
 
 #### Docker imageの削除
 
 ```
-sudo docker rmi cspsat-ubuntu
+docker rmi cspsat-ubuntu
 ```
 
 - 必要があればタグでなくimage IDで削除する
