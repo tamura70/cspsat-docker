@@ -59,6 +59,12 @@ sugar -vv -solver minisat csp-examples/nqueens-8.csp
 - `/work` フォルダ中にファイルを作成した場合，実際にはホスト側の `work` フォルダに作成される．
 - `/work` フォルダ以外に作成したファイルなどは，containerを終了した時点で削除される．
 
+以下のようにすれば，直接実行できる．
+
+```
+docker run --rm -it -v `pwd`/work:/work cspsat-ubuntu:1.0 sugar -vv -solver minisat csp-examples/arithm-java_cream_solver.csp
+```
+
 #### Docker containerの一覧を表示
 
 ```
