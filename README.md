@@ -32,6 +32,16 @@ docker rmi cspsat-ubuntu:1.0
 
 ## Docker container
 
+#### 準備
+
+```
+sudo chgrp -R users work
+chmod -R g+x work
+```
+
+- `work` フォルダのgroupをusers (GID=100)に設定
+- `work` フォルダにusers groupでの書き込み権限を与える
+
 #### Docker containerの作成と実行
 
 ```
@@ -52,9 +62,9 @@ bashシェルのプロンプトが表示されたのち，以下のようにし�
 sugar -vv -solver minisat csp-examples/nqueens-8.csp
 ```
 
-- 実行権限は `cspsat` ユーザ (UID=1000, GID=1000, PW=`cspsat`)，最初のディレクトリは `/work` である
+- 実行権限は `cspsat` ユーザ (UID=2000, GID=100, PW=`cspsat`)，最初のディレクトリは `/work` である
   (`Dockerfile` 中で指定)．
-- ホスト側の `work` フォルダのownerがUID=1000であると仮定している．
+- ホスト側の `work` フォルダがGID=100でwritableであると仮定している．
 - 管理者権限でコマンドを実行したい場合は `sudo` を用いる．
 - `/work` フォルダ中にファイルを作成した場合，実際にはホスト側の `work` フォルダに作成される．
 - `/work` フォルダ以外に作成したファイルなどは，containerを終了した時点で削除される．

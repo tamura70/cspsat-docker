@@ -53,10 +53,14 @@ RUN curl -LO https://github.com/tamura70/cspsat-setup/archive/main.zip \
     && cp -pr cspsat-setup-main/lib/* /usr/local/lib/
 
 # User
-RUN adduser -S -h /home/cspsat -s /bin/bash -u 1000 -G root cspsat \
-    && mkdir -p /home/cspsat && chown cspsat.root /home/cspsat \
+RUN adduser -S -h /home/cspsat -s /bin/bash -u 2000 -G users cspsat \
+    && mkdir -p /home/cspsat && chown cspsat.users /home/cspsat \
     && echo "cspsat ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
     && echo 'cspsat:cspsat' | chpasswd
 USER cspsat
+RUN echo 'umask 0002' >>~/.bashrc
 RUN echo 'export PATH=/usr/local/scala-2.12.8/bin:$PATH' >>~/.bashrc
 WORKDIR /work
+
+CMD ["/bin/bash"]
+
