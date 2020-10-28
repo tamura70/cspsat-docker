@@ -26,6 +26,9 @@ RUN apt-get install -y curl
 # java jre
 RUN apt-get install -y openjdk-8-jre-headless
 
+# perl
+RUN apt-get install -y libtime-hires-perl
+
 # gcc, g++
 # RUN apt-get install -y build-essential
 # minisatなどで利用されている圧縮ライブラリ
