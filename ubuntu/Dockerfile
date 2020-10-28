@@ -26,7 +26,7 @@ RUN apt-get install -y curl
 # java jre
 RUN apt-get install -y openjdk-8-jre-headless
 
-# perl
+# perl library (timeout.pl用)
 RUN apt-get install -y libtime-hires-perl
 
 # gcc, g++
