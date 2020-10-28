@@ -19,6 +19,8 @@ docker build -t cspsat-ubuntu ubuntu/
 
 - ネットワーク環境の良好な場所で実行すること．
 - `Dockerfile` の内容にしたがってdocker imageが作成され，`cspsat-ubuntu` というタグが付けられる．
+    - docker imageのタグは，サーバー上で一意でなければならない
+    - サーバー管理者以外がdocker imageにタグを付ける場合は，自分のユーザ名を利用すること
 - 詳細は `Dockerfile` の内容を参照
 
 軽量なイメージの alpine を用いる場合は以下の通り．
@@ -26,6 +28,9 @@ docker build -t cspsat-ubuntu ubuntu/
 ```
 docker build -t cspsat-alpine alpine/
 ```
+
+- shared libraryであるglibcなどが含まれていない．
+  Cのプログラムを実行したい場合はstatic linkで実行ファイルを作成しておくこと．
 
 #### Docker imageの一覧を表示
 
@@ -70,10 +75,11 @@ docker run --rm -it -v `pwd`/work:/work cspsat-ubuntu
 - 追加で `--cpuset-cpus 0` と指定すればCPUコア0番を使用する (未確認)．
 - 追加で `-m 2g` と指定すればメモリサイズが2GBに制限される (未確認)．
 
-bashシェルのプロンプトが表示されたのち，以下のようにしてコマンドを実行できる．
+bashシェルのプロンプトが表示されたのち，以下のようにしてコマンドを実行できる
+(`/work/csp-examples/nqueens-8.csp` が存在している場合)．
 
 ```
-sugar -vv -solver minisat csp-examples/nqueens-8.csp
+sugar -vv -solver minisat /work/csp-examples/nqueens-8.csp
 ```
 
 - 実行権限は `cspsat` ユーザ (UID=2000, GID=100, PW=`cspsat`)，最初のディレクトリは `/work` である
@@ -86,7 +92,7 @@ sugar -vv -solver minisat csp-examples/nqueens-8.csp
 以下のようにすれば，直接実行できる．
 
 ```
-docker run --rm -it -v `pwd`/work:/work cspsat-ubuntu sugar -vv -solver minisat csp-examples/arithm-java_cream_solver.csp
+docker run --rm -it -v `pwd`/work:/work cspsat-ubuntu sugar -vv -solver minisat /work/csp-examples/nqueens-8.csp
 ```
 
 #### Docker containerの一覧を表示
