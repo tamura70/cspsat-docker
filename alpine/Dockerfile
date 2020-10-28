@@ -1,10 +1,7 @@
 # ベースとなるdocker imageを指定
 FROM alpine:3.12
 
-# tzdataの設定で止まらないようにする
-# ENV DEBIAN_FRONTEND=noninteractive
-
-# image作成時に実行するコマンド
+# apk
 RUN apk update && apk upgrade
 
 # timezone setting

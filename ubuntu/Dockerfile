@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 # tzdataの設定で止まらないようにする
 ENV DEBIAN_FRONTEND=noninteractive
 
-# image作成時に実行するコマンド
+# apt-get
 RUN apt-get update && apt-get upgrade -y
 
 # timezone setting
@@ -31,10 +31,13 @@ RUN apt-get install -y libtime-hires-perl
 
 # gcc, g++
 # RUN apt-get install -y build-essential
+
 # minisatなどで利用されている圧縮ライブラリ
 # RUN apt-get install -y zlib1g-dev
+
 # java jdk
-# RUN apt-get install -y default-jdk
+# RUN apt-get install -y openjdk-8-jdk
+
 # git
 # RUN apt-get install -y git
 
