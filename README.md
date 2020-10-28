@@ -3,12 +3,18 @@
 #### カレントディレクトリのDockerfileからdocker imageを作成
 
 ```
-docker build -t cspsat:1.0 .
+docker build -t cspsat-ubuntu:1.0 ubuntu/
 ```
 
 - ネットワーク環境の良好な場所で実行すること．
-- `Dockerfile` の内容にしたがってdocker imageが作成され，`cspsat:1.0` というタグが付けられる．
+- `Dockerfile` の内容にしたがってdocker imageが作成され，`cspsat-ubuntu:1.0` というタグが付けられる．
 - 詳細は `Dockerfile` の内容を参照
+
+軽量なイメージの alpine を用いる場合は以下の通り．
+
+```
+docker build -t cspsat-alpine:1.0 alpine/
+```
 
 #### Docker imageの一覧を表示
 
@@ -19,7 +25,7 @@ docker images
 #### Docker imageの削除
 
 ```
-docker rmi cspsat:1.0
+docker rmi cspsat-ubuntu:1.0
 ```
 
 - 必要があればタグでなくimage IDで削除する
@@ -29,10 +35,10 @@ docker rmi cspsat:1.0
 #### Docker containerの作成と実行
 
 ```
-docker run --name cspsat1 --rm -it -v `pwd`/work:/work cspsat:1.0
+docker run --name cspsat1 --rm -it -v `pwd`/work:/work cspsat-ubuntu:1.0
 ```
 
-- タグ `cspsat:1.0` が付いたdocker imageからcontainerが作成され，bashシェルが実行される．
+- タグ `cspsat-ubuntu:1.0` が付いたdocker imageからcontainerが作成され，bashシェルが実行される．
 - containerには `cspsat1` というcontainer名が付けられる．
 - `--rm`  オプションにより，bashシェルが終了すればcontainerが削除される．
 - `-it` オプションは，インタラクティブモードを指定している．
