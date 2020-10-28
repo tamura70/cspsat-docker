@@ -11,18 +11,6 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y tzdata
 ENV TZ=Asia/Tokyo 
 
-# gcc, g++
-# RUN apt-get install -y build-essential
-# minisatなどで利用されている圧縮ライブラリ
-# RUN apt-get install -y zlib1g-dev
-# java jdk
-# RUN apt-get install -y default-jdk
-# git
-# RUN apt-get install -y git
-
-# java jre
-RUN apt-get install -y openjdk-8-jre-headless
-
 # zip, unzip
 RUN apt-get install -y zip unzip
 
@@ -34,6 +22,21 @@ RUN apt-get install -y sudo
 
 # curl
 RUN apt-get install -y curl
+
+# java jre
+RUN apt-get install -y openjdk-8-jre-headless
+
+# gcc, g++
+# RUN apt-get install -y build-essential
+# minisatなどで利用されている圧縮ライブラリ
+# RUN apt-get install -y zlib1g-dev
+# java jdk
+# RUN apt-get install -y default-jdk
+# git
+# RUN apt-get install -y git
+
+# apt-get clean
+RUN apt-get clean
 
 # scala
 RUN curl -LO https://downloads.lightbend.com/scala/2.12.8/scala-2.12.8.zip \
