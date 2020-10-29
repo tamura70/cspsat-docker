@@ -84,7 +84,7 @@ docker run --rm -it -v `pwd`:/work cspsat-ubuntu
 - 他のオプションは `docker run --help` で調べられる．
     - `--cpus 1` : CPUコア数を1個に制限 (未確認)
     - `--memory 4g` : メモリサイズを4GBに制限 (未確認)
-    - `--ulimit` : ulimitの設定 (未確認)
+    - `--ulimit cpu=3600` : 各プロセスのCPU時間を3600秒に制限 (未確認)
 
 bashシェルのプロンプトが表示されたのち，以下のようにしてコマンドを実行できる
 (`csp-examples/nqueens-8.csp` が存在している場合)．
