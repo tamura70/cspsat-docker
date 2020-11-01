@@ -10,6 +10,8 @@ sudo adduser xxx users
 ```
 
 - `xxx` はユーザ名
+- ユーザ `xxx` はいったんログアウトしてログインする
+    - `groups` コマンドで所属しているgroupを確認できる
 
 #### カレントディレクトリのDockerfileからdocker imageを作成
 
@@ -35,7 +37,7 @@ docker build -t cspsat-alpine alpine/
 #### Docker imageの一覧を表示
 
 ```
-docker images
+docker image ls
 ```
 
 #### Docker imageの削除
