@@ -64,4 +64,6 @@ RUN useradd -u 2000 -g users -G sudo -m -s /bin/bash cspsat \
 USER cspsat
 RUN echo 'umask 0002' >>~/.bashrc
 RUN echo 'export PATH=/usr/local/scala-2.12.8/bin:$PATH' >>~/.bashrc
+# RUN echo 'umask 0002' >>~/.profile
+# RUN echo 'PATH="/usr/local/scala-2.12.8/bin:$PATH"' >>~/.profile
 WORKDIR /work
