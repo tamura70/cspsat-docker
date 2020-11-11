@@ -16,11 +16,12 @@ sudo adduser xxx users
 #### カレントディレクトリのDockerfileからdocker imageを作成
 
 ```
+docker build -t cspsat-ubuntu-base -f ubuntu/Dockerfile.base ubuntu/
 docker build -t cspsat-ubuntu ubuntu/
 ```
 
 - ネットワーク環境の良好な場所で実行すること．
-- `Dockerfile` の内容にしたがってdocker imageが作成され，`cspsat-ubuntu` というタグが付けられる．
+- `Dockerfile` の内容にしたがってdocker imageが作成され `cspsat-ubuntu-base`, `cspsat-ubuntu` というタグが付けられる．
     - docker imageのタグは，サーバー上で一意でなければならない
     - サーバー管理者以外がdocker imageにタグを付ける場合は，自分のユーザ名を利用すること
 - 詳細は `Dockerfile` の内容を参照
@@ -28,6 +29,7 @@ docker build -t cspsat-ubuntu ubuntu/
 軽量なイメージの alpine を用いる場合は以下の通り．
 
 ```
+docker build -t cspsat-alpine-base -f alpine/Dockerfile.base alpine/
 docker build -t cspsat-alpine alpine/
 ```
 
