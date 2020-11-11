@@ -58,6 +58,3 @@ USER cspsat
 RUN echo 'umask 0002' >>~/.bashrc
 RUN echo 'export PATH=/usr/local/scala-2.12.8/bin:$PATH' >>~/.bashrc
 WORKDIR /work
-
-CMD ["/bin/bash"]
-

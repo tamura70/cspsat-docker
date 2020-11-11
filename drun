@@ -1,2 +1,2 @@
 #!/bin/bash
-exec docker run --rm -it -v `pwd`:/work --cpus 1 --memory 4g --ulimit cpu=3600 cspsat-ubuntu $*
+exec docker run --rm -it -v `pwd`/work:/work --cpus 1 --memory 4g --ulimit cpu=3600 cspsat-ubuntu $*

@@ -107,10 +107,12 @@ sugar -vv -solver minisat csp-examples/nqueens-8.csp
 以下のようにすれば，直接実行できる．
 
 ```
-docker run --rm -it -v `pwd`:/work cspsat-ubuntu sugar -vv -solver minisat csp-examples/nqueens-8.csp
+cd work
+docker run --rm -it -v `pwd`:/work cspsat-ubuntu bash -ic "sugar -vv -solver minisat csp-examples/nqueens-8.csp"
 ```
 
-シェルスクリプト `drun` を利用しても良い．
+- `bash -ic` でbashシェルをinteractiveモードで起動し，コマンドを実行する．
+- interactiveモードでないと `.bashrc` が実行されず，PATHやumaskが設定されないので注意する．
 
 #### Docker containerの一覧を表示
 
